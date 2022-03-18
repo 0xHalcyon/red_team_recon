@@ -45,15 +45,11 @@ while i <= pages:
         i += 1
     except simplejson.errors.JSONDecodeError as e:
         print("Someone at Shodan didn't properly handle this: %s" % e)
-        print("As a result, we're skipping page: %i" % i)
-        print("You may want to manualy download this page")
-        #i += 1
+        print("As a result, we're retrying page: %i" % i)
         continue
     except shodan.exception.APIError as e:
         print("Someone at Shodan didn't properly handle this: %s" % e)
-        print("As a result, we're skipping page: %i" % i)
-        print("You may want to manualy download this page")
-        #i += 1
+        print("As a result, we're retrying page: %i" % i)
         continue
 ASN['matches'].append(ip_ports)
 filename = 'shodan_ip_port_%s_%s.json' % (Autonomous_System.lower(), Org_Name)
